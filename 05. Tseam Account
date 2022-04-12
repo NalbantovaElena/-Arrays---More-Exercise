@@ -1,0 +1,46 @@
+function solve(input) {
+    let games = input.shift()
+    games = games.split(' ')
+    //console.log(games)
+    // •	Install {game} - add the game at last position in the account, 
+    //but only if it isn't installed already.
+    // •	Uninstall {game} - delete the game if it exists.
+    // •	Update {game} - update the game if it exists and place it on last position.
+    // •	Expansion {game}-{expansion} - check if the game exists and insert 
+    //after it the expansion in the following format: "{game}:{expansion}";
+    let commands = input.shift()
+    while (commands !== 'Play!') {
+        let [command, game] = commands.split(' ')
+        if (command === 'Install') {
+            if(!games.includes(game)){
+                 games.push(game)
+            }
+           
+            //console.log(games)
+        } else if (command === 'Uninstall') {
+            if (games.includes(game)) {
+                let index = games.indexOf(game);
+                //console.log(index)
+                games.splice(index, 1);
+                //console.log(games)
+            }
+        } else if (command === 'Update') {
+            if (games.includes(game)) {
+                let index = games.indexOf(game);
+                games.splice(index, 1);
+                games.push(game);
+            }
+        } else if (command === 'Expansion') {
+            let expansion = game.split('-')
+            if (games.includes(expansion[0])) {
+                //console.log(games.indexOf(expansion[0]))
+                games.splice(Number(games.indexOf(expansion[0]) + 1), 0, `${expansion[0]}:${expansion[1]}`)
+
+            }
+
+        }
+        //console.log(command)
+        commands = input.shift()
+    }
+    console.log(games.join(' '))
+}
