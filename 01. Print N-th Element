@@ -1,0 +1,11 @@
+function solve(input) {
+    let result = []
+    //input = input.map(x => Number(x))
+    let step = Number(input.pop());
+    //console.log(step)
+    for (let i = 0; i < input.length; i += step) {
+
+        result.push(input[i]);
+    }
+    console.log(result.join(' '))
+}
