@@ -1,0 +1,15 @@
+function solve(input) {
+    let bigElement = 0;
+
+    let arrResult = input.filter(element => {
+        //console.log(element)
+        if (bigElement <= element) {
+            bigElement = element
+            //console.log(bigElement)
+
+        }
+        return bigElement <= element
+    })
+    //console.log(arrResult)
+    console.log(arrResult.join(' '))
+}
