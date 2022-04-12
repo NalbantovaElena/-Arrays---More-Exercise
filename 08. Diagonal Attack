@@ -1,0 +1,39 @@
+function solve(input) {
+    let sumLeft = 0
+    let sumRigth = 0
+    let arr = []
+    for (let i = 0; i < input.length; i++) {
+        let row = input[i].split(' ')
+        sumLeft += Number(row[i])
+        arr.push(row)
+    }
+    for (let i = 0; i < input.length; i++) {
+        let arrReverse = input[i].split(' ').reverse()
+        sumRigth += Number(arrReverse[i])
+    }
+    
+    //console.log(arr)
+    if (sumLeft === sumRigth) {
+
+        for (let i = 0; i < arr.length; i++) {
+           for (let j = 0; j < arr.length; j++) {
+            //console.log(`${i}${j} - ij   ${arr[i][j]}`)
+              if ((i !== j) && (i !== arr.length - j - 1)) {
+                  //console.log(`${i}${j} - ij   ${arr[i][j]}`)
+                   arr[i][j] = sumLeft
+                }
+            }
+           
+        }
+        arr.forEach(element => {
+            console.log(element.join(' '))
+        })
+    } else {
+        
+        input.forEach(element => {
+            console.log(element.split().join(' '))
+        })
+
+    }
+
+}
